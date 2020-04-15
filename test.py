@@ -23,20 +23,19 @@ class FileAnalizer:
 
 
 parser = argparse.ArgumentParser()
-parser.add_argument("command", type=str, action="store")
-options = parser.parse_args()
-command = options.command
+parser.add_argument("filename", type=str, action="store")
 
-if command is None:
+if len(sys.argv) < 2:
     print()
-    print("WELCOME!")
-    print("This program analyzes the data entered by the user")
+    print("WELCOME TO FILE ANALIZER")
+    print("This program analyzes the data from users txt file.")
+    print("To run a program ...")
     print()
-    sys.exit(0)
+    sys.exit()
 
-elif command == "filename":
+else:
+    options = parser.parse_args()
     file = FileAnalizer(options.filename)
     file.process_file()
-
     print(file.counter)
     print(file.dots_counter)
