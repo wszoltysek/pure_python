@@ -1,29 +1,31 @@
 import argparse
 import sys
 
+
 class FileAnalizer:
 
     def __init__(self, filename):
         self.filename = filename
-        self.file_counter = 0
+        self.all_char_counter = 0
+        self.sentence_counter = 0
         self.upper_counter = 0
         self.lower_counter = 0
         self.dots_counter = 0
         self.comas_counter = 0
         self.digits_counter = 0
-        self.special_list = ["!", "?", "@", "#", "$", "%", "^", "&", "*", "-", "+", "=", "_", ":", ";"]
         self.special_counter = 0
-        self.sentence_counter = 0
+        self.special_list = ["!", "?", "@", "#", "$", "%", "^", "&", "*", "-", "+", "=", "_", ":", ";"]
+        self.other_counter = 0
 
     def process_file(self):
         with open(self.filename, "r") as input_file:
+            txt_file = input_file.read()
+            self.all_char_counter = len(txt_file)
+            self.sentence_counter = len(txt_file.split(". "))
 
-            while True:
-                char = input_file.read(1)
-                self.file_counter += len(char)
-
-                if not char:
-                    break
+            for char in txt_file:
+                if char.isupper():
+                    self.upper_counter += 1
                 elif char.isupper():
                     self.upper_counter += 1
                 elif char.islower():
@@ -32,10 +34,12 @@ class FileAnalizer:
                     self.dots_counter += 1
                 elif char == ",":
                     self.comas_counter += 1
+                elif char.isdigit():
+                    self.digits_counter += 1
                 elif char in self.special_list:
                     self.special_counter += 1
-                elif char == ". ":
-                    self.sentence_counter += 1
+                else:
+                    self.other_counter += 1
 
 
 parser = argparse.ArgumentParser()
@@ -54,17 +58,19 @@ else:
     file = FileAnalizer(options.filename)
     file.process_file()
 
-    if file.file_counter == 0:
+    if file.all_char_counter == 0:
         print()
         print("Your text file is empty.")
         print()
     else:
-        print(f"Your text file have {file.file_counter} characters.")
+        print(f"Your text file have {file.all_char_counter} characters.")
         print()
         print("There are:")
+        print(f"{file.sentence_counter} sentences,")
         print(f"{file.upper_counter} upper letters,")
         print(f"{file.lower_counter} lower letters,")
         print(f"{file.dots_counter} dots,")
         print(f"{file.comas_counter} comas,")
+        print(f"{file.digits_counter} digits,")
         print(f"{file.special_counter} special characters like: !, ?, #, %, * etc.")
-        # print("zdania", file.sentence_counter)
+        print(f"{file.other_counter} others.")
