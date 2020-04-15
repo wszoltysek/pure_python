@@ -78,14 +78,14 @@ while not done:
             print(f"{file.comas_counter} comas,")
             print(f"{file.spaces_counter} white spaces,")
             print(f"{file.digits_counter} digits,")
-            print(f"{file.special_counter} special characters like: !, ?, #, %, * etc.")
-            print(f"{file.other_counter} others.")
+            print(f"{file.special_counter} special characters like: !, ?, #, %, * etc,")
+            print(f"and {file.other_counter} other characters.")
             print()
 
     if "yes" == input("Do you want to start over? [Write \"yes\" or \"no\"] "):
         print()
         print("WELCOME AGAIN!")
-        print("To run a program write: \"python3 file_analizer.py your_txt_file.txt\" ")
+        print("To run a program write: \"python3 file_analizer.py <your_txt_file_name>.txt\" ")
         print()
         sys.exit()
     else:
