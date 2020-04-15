@@ -29,8 +29,6 @@ while not done:
                 for char in txt_file:
                     if char.isupper():
                         self.upper_counter += 1
-                    elif char.isupper():
-                        self.upper_counter += 1
                     elif char.islower():
                         self.lower_counter += 1
                     elif char == ".":
