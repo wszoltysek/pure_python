@@ -1,11 +1,11 @@
 import argparse
 import sys
+from app_msgs import start_msg, repeat_msg, end_msg
 
 done = False
 while not done:
 
     class FileAnalizer:
-
         def __init__(self, filename):
             self.filename = filename
             self.all_char_counter = 0
@@ -19,6 +19,7 @@ while not done:
             self.special_counter = 0
             self.special_list = ["!", "?", "@", "#", "$", "%", "^", "&", "*", "-", "+", "=", "_", ":", ";"]
             self.other_counter = 0
+            self.character = []
 
         def process_file(self):
             with open(self.filename, "r") as input_file:
@@ -27,6 +28,7 @@ while not done:
                 self.sentence_counter = len(txt_file.split(". "))
 
                 for char in txt_file:
+                    self.character = char
                     if char.isupper():
                         self.upper_counter += 1
                     elif char.islower():
@@ -49,11 +51,7 @@ while not done:
     parser.add_argument("filename", type=str, action="store")
 
     if len(sys.argv) < 2:
-        print()
-        print("WELCOME TO TEXT FILE ANALIZER")
-        print("This program analyzes the data from users txt file.")
-        print("To run a program write: \"python3 file_analizer.py your_txt_file.txt\" ")
-        print()
+        print(start_msg)
         sys.exit()
 
     else:
@@ -62,30 +60,29 @@ while not done:
         file.process_file()
 
         if file.all_char_counter == 0:
-            print()
-            print("Your text file is empty.")
-            print()
+            print("\nYour text file is empty.\n")
         else:
-            print(f"Your text file have {file.all_char_counter} characters.")
-            print()
-            print("There are:")
-            print(f"{file.sentence_counter} sentences,")
-            print(f"{file.upper_counter} upper letters,")
-            print(f"{file.lower_counter} lower letters,")
-            print(f"{file.dots_counter} dots,")
-            print(f"{file.comas_counter} comas,")
-            print(f"{file.spaces_counter} white spaces,")
-            print(f"{file.digits_counter} digits,")
-            print(f"{file.special_counter} special characters like: !, ?, #, %, * etc,")
-            print(f"and {file.other_counter} other characters.")
-            print()
+            if file.all_char_counter == 1:
+                print(f"\nYour text file have {file.all_char_counter} character.")
+                print(f"It's {file.character}.\n")
+            else:
+                print(f"\nYour text file have {file.all_char_counter} characters.\n")
+                print("There are:\n")
+                print(f"{file.sentence_counter} sentences,")
+                print(f"{file.upper_counter} upper letters,")
+                print(f"{file.lower_counter} lower letters,")
+                print(f"{file.dots_counter} dots,")
+                print(f"{file.comas_counter} comas,")
+                print(f"{file.spaces_counter} white spaces,")
+                print(f"{file.digits_counter} digits,")
+                print(f"{file.special_counter} special characters like: !, ?, #, %, * etc,")
+                print(f"and {file.other_counter} other characters.\n")
 
-    if "yes" == input("Do you want to start over? [Write \"yes\" or \"no\"] "):
-        print()
-        print("WELCOME AGAIN!")
-        print("To run a program write: \"python3 file_analizer.py <your_txt_file_name>.txt\" ")
-        print()
+    if "yes" == input("Do you want to start over with a different file? "
+                      "[Write \"yes\" or \"no\"] \n"):
+        print(repeat_msg)
         sys.exit()
     else:
         done = True
+        print(end_msg)
         sys.exit()
