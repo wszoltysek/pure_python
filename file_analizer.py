@@ -55,28 +55,33 @@ while not done:
         sys.exit()
 
     else:
-        options = parser.parse_args()
-        file = FileAnalizer(options.filename)
-        file.process_file()
+        try:
+            options = parser.parse_args()
+            file = FileAnalizer(options.filename)
+            file.process_file()
 
-        if file.all_char_counter == 0:
-            print("\nYour text file is empty.\n")
-        else:
-            if file.all_char_counter == 1:
-                print(f"\nYour text file have {file.all_char_counter} character.")
-                print(f"It's {file.character}.\n")
+            if file.all_char_counter == 0:
+                print("\nYour text file is empty.\n")
             else:
-                print(f"\nYour text file have {file.all_char_counter} characters.\n")
-                print("There are:\n")
-                print(f"{file.sentence_counter} sentences,")
-                print(f"{file.upper_counter} upper letters,")
-                print(f"{file.lower_counter} lower letters,")
-                print(f"{file.dots_counter} dots,")
-                print(f"{file.comas_counter} comas,")
-                print(f"{file.spaces_counter} white spaces,")
-                print(f"{file.digits_counter} digits,")
-                print(f"{file.special_counter} special characters like: !, ?, #, %, * etc,")
-                print(f"and {file.other_counter} other characters.\n")
+                if file.all_char_counter == 1:
+                    print(f"\nYour text file have {file.all_char_counter} character.")
+                    print(f"It's {file.character}.\n")
+                else:
+                    print(f"\nYour text file have {file.all_char_counter} characters.\n")
+                    print("There are:\n")
+                    print(f"{file.sentence_counter} sentences,")
+                    print(f"{file.upper_counter} upper letters,")
+                    print(f"{file.lower_counter} lower letters,")
+                    print(f"{file.dots_counter} dots,")
+                    print(f"{file.comas_counter} comas,")
+                    print(f"{file.spaces_counter} white spaces,")
+                    print(f"{file.digits_counter} digits,")
+                    print(f"{file.special_counter} special characters like: !, ?, #, %, * etc,")
+                    print(f"and {file.other_counter} other characters.\n")
+
+        except FileNotFoundError:
+            print("\nFile not found or invalid. \nStart over and enter the correct one.\n")
+            sys.exit()
 
     if "yes" == input("Do you want to start over with a different file? "
                       "[Write \"yes\" or \"no\"] \n"):
