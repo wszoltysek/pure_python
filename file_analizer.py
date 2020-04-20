@@ -80,7 +80,7 @@ while not done:
                     print(f"and {file.other_counter} other characters.\n")
 
         except FileNotFoundError:
-            print("\nFile not found or invalid. \nStart over and enter the correct one.\n")
+            print("\nFile not found or invalid. \nStart over and enter the correct *.txt file.\n")
             sys.exit()
 
     if "yes" == input("Do you want to start over with a different file? "
