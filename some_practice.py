@@ -36,11 +36,21 @@
 
 # SORTOWANIE:
 
-int_list_one = [1, 3, 7, 2, 42]
-int_list_two = [1, 0, 17, 34, 22, 3, 7, 2, 42]
+# int_list_one = [1, 3, 7, 2, 42]
+# int_list_two = [1, 0, 17, 34, 22, 3, 7, 2, 42]
+#
+# int_list_one.sort()
+# sorted_list = sorted(int_list_two)
+#
+# print(int_list_one)
+# print(sorted_list)
 
-int_list_one.sort()
-sorted_list = sorted(int_list_two)
 
-print(int_list_one)
-print(sorted_list)
+# SPŁASZCZANIE LISTY LIST:
+
+list_of_one = [[1], [2], [3], [4], [8], [9], 1] # Ten przykład wywali błąd!
+list_of_lists = [[180.0], [173.8], [164.2], [156.5], [147.2], [138.2]]
+flattened = [val for sublist in list_of_lists for val in sublist]
+flattened_one = [val for sublist in list_of_one for val in sublist]
+print(flattened)
+print(flattened_one)
