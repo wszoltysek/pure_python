@@ -1,6 +1,5 @@
 # GENERATORY - Funkcje, które zwracają kolejne wartosci iteratora:
 
-
 # def yield_test(value):
 #     sam_list = ["a", "b", "e", "y"]
 #     for sam in value:
@@ -66,12 +65,28 @@
 
 # MIN / MAX IN LIST:
 
-def side_values(num_list):
-    results_list = sorted(num_list)
-    return results_list[0], results_list[-1]
-
-
-somelist = side_values([1, 12, 2, 53, 23, 6, 17])
-print(somelist)
+# def side_values(num_list):
+#     results_list = sorted(num_list)
+#     return results_list[0], results_list[-1]
+#
+#
+# somelist = side_values([1, 12, 2, 53, 23, 6, 17])
+# print(somelist)
 
 # Python ma wbudowane również funkcje min i max.
+
+
+# COMPREHENSIONS:
+
+# List:
+# list_comp = [2 ** i for i in range(10)]
+# print(list_comp)
+
+# Dict:
+# dict_comp = {"p-" + str(i): 2 ** i for i in range(10)}
+# print(dict_comp)
+
+# Generator:
+# gen_comp = (2 ** i for i in range(10))
+# for gen in gen_comp:
+#     print(gen)
