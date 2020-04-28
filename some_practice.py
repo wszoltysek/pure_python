@@ -1,16 +1,24 @@
-# GENERATORY:
+# GENERATORY - Funkcje, które zwracają kolejne wartosci iteratora:
 
 
-# def veoy(value):
+# def yield_test(value):
 #     sam_list = ["a", "b", "e", "y"]
 #     for sam in value:
 #         if sam in sam_list:
 #             yield sam
 #
 #
+# def return_test(value):
+#     sam_list = ["a", "b", "e", "y"]
+#     for sam in value:
+#         if sam in sam_list:
+#             return sam
+#
+#
 # smt = "ala i ewelina ma kota"
 #
-# print([sam for sam in veoy(smt)])
+# print("debug1", [sam for sam in yield_test(smt)])
+# print("debug2", [sam for sam in return_test(smt)])
 
 
 # ARGS / KWARGS:
@@ -48,9 +56,22 @@
 
 # SPŁASZCZANIE LISTY LIST:
 
-list_of_one = [[1], [2], [3], [4], [8], [9], 1] # Ten przykład wywali błąd!
-list_of_lists = [[180.0], [173.8], [164.2], [156.5], [147.2], [138.2]]
-flattened = [val for sublist in list_of_lists for val in sublist]
-flattened_one = [val for sublist in list_of_one for val in sublist]
-print(flattened)
-print(flattened_one)
+# list_of_one = [[1], [2], [3], [4], [8], [9], 1] # Ten przykład wywali błąd!
+# list_of_lists = [[180.0], [173.8], [164.2], [156.5], [147.2], [138.2]]
+# flattened = [val for sublist in list_of_lists for val in sublist]
+# flattened_one = [val for sublist in list_of_one for val in sublist]
+# print(flattened)
+# print(flattened_one)
+
+
+# MIN / MAX IN LIST:
+
+def side_values(num_list):
+    results_list = sorted(num_list)
+    return results_list[0], results_list[-1]
+
+
+somelist = side_values([1, 12, 2, 53, 23, 6, 17])
+print(somelist)
+
+# Python ma wbudowane również funkcje min i max.
