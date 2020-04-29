@@ -83,10 +83,20 @@
 # print(list_comp)
 
 # Dict:
-# dict_comp = {"p-" + str(i): 2 ** i for i in range(10)}
+# dict_comp = {"Dict nr" + str(i): 2 ** i for i in range(10)}
 # print(dict_comp)
 
 # Generator:
 # gen_comp = (2 ** i for i in range(10))
 # for gen in gen_comp:
 #     print(gen)
+
+
+# is vs ==
+# is zwróci True, jeśli dwie zmienne wskazują ten sam obiekt
+# == jeśli obiekty, do których odnoszą się zmienne, są równe.
+
+
+# isinstance()
+# Example: isinstance(type, int) / isinstance(5, int) / isinstance("mama", str)
+# Funkcja isinstance () zwraca wartość True, jeśli określony obiekt jest określonego typu, w przeciwnym razie False.
