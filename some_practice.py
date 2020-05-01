@@ -100,3 +100,19 @@
 # isinstance()
 # Example: isinstance(type, int) / isinstance(5, int) / isinstance("mama", str)
 # Funkcja isinstance () zwraca wartość True, jeśli określony obiekt jest określonego typu, w przeciwnym razie False.
+
+
+# TYPING MODULE:
+
+# from typing import List
+# Vector = List[float]
+#
+#
+# def scale(scalar: float, vector: Vector) -> Vector:
+#     return [scalar * num for num in vector]
+#
+#
+# print(scale(2.2, [2]))
+
+# Narzucamy typy argumentów, które ma funkcja przyjąć
+# i narzucamy jaki typ ma funkcja zwrócić.
