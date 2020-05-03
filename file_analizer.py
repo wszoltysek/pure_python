@@ -19,7 +19,7 @@ while not done:
             self.special_counter = 0
             self.special_list = ["!", "?", "@", "#", "$", "%", "^", "&", "*", "-", "+", "=", "_", ":", ";"]
             self.other_counter = 0
-            self.character = ''
+            self.character = ""
 
         def process_file(self):
             with open(self.filename, "r") as input_file:
