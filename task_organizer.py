@@ -49,7 +49,7 @@ if args.parser == 'add':
     task_hash = str(uuid.uuid4())
     deadline = get_datetime(args.deadline)
 
-    cursor.execute("INSERT INTO task VALUES (?, ?, ?, ?)", (name, deadline, description, task_hash))
+    cursor.execute('INSERT INTO task VALUES (?, ?, ?, ?)', (name, deadline, description, task_hash))
     conn.commit()
 
 elif args.parser == 'update':
@@ -59,7 +59,7 @@ elif args.parser == 'update':
     task_hash = str(args.hash)
 
     conn.execute(
-        "UPDATE task SET name=?, deadline=?, description=? WHERE hash=?",
+        'UPDATE task SET name=?, deadline=?, description=? WHERE hash=?',
         (name, deadline, description, task_hash)
     )
     conn.commit()
@@ -67,11 +67,11 @@ elif args.parser == 'update':
 elif args.parser == 'remove':
     task_hash = str(args.hash)
 
-    result = conn.execute("DELETE FROM task WHERE hash=?", [task_hash])
+    result = conn.execute('DELETE FROM task WHERE hash=?', [task_hash])
     conn.commit()
 
     if result.rowcount == 0:
-        sys.exit("Insert correct hash.")
+        sys.exit('Insert correct hash.')
 
 elif args.parser == 'list':
     if args.all:
@@ -83,8 +83,8 @@ elif args.parser == 'list':
 
     for row in tasks:
         if tasks is not None:
-            print(f"Name: {row[0]} | Deadline: {row[1]} | Description: {row[2]} | Hash: {row[3]}")
+            print(f'Name: {row[0]} | Deadline: {row[1]} | Description: {row[2]} | Hash: {row[3]}')
         else:
-            print("There are no tasks.")
+            print('There are no tasks.')
 else:
     print('Invalid command!')
