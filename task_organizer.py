@@ -28,12 +28,24 @@ update_parser.add_argument('--hash', help='Task hash', required=True)
 
 args = parser.parse_args()
 
+conn = sqlite3.connect('tasks.sqlite')
+
+try:
+    conn.execute('''CREATE TABLE task
+             (name text NOT NULL,
+             deadline date NOT NULL,
+             description text NOT NULL,
+             hash varchar(36) NOT NULL
+             );''')
+    print('Task table created successfully.')
+except sqlite3.OperationalError:
+    pass
+
+cursor = conn.cursor()
+
 if args.parser is None:
     print(task_intro)
     sys.exit(0)
-
-conn = sqlite3.connect('tasks.sqlite')
-cursor = conn.cursor()
 
 
 def get_datetime(datetime_string):
