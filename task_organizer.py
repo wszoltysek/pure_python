@@ -43,19 +43,19 @@ except sqlite3.OperationalError:
 
 cursor = conn.cursor()
 
-if args.parser is None:
-    print(task_intro)
-    sys.exit(0)
-
 
 def get_datetime(datetime_string):
     try:
         return dt.datetime.strptime(datetime_string, '%Y-%m-%d').date()
     except ValueError:
-        sys.exit('Incorrect data format, should be YYYY-MM-DD')
+        sys.exit('Incorrect data format. Should be YYYY-MM-DD.')
 
 
-if args.parser == 'add':
+if args.parser is None:
+    print(task_intro)
+    sys.exit(0)
+
+elif args.parser == 'add':
     name = str(args.name)
     description = str(args.description)
     task_hash = str(uuid.uuid4())
@@ -98,5 +98,6 @@ elif args.parser == 'list':
             print(f'Name: {row[0]} | Deadline: {row[1]} | Description: {row[2]} | Hash: {row[3]}')
         else:
             print('There are no tasks.')
+
 else:
     print('Invalid command!')
