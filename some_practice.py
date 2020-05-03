@@ -116,3 +116,22 @@
 
 # Narzucamy typy argumentów, które ma funkcja przyjąć
 # i narzucamy jaki typ ma funkcja zwrócić.
+
+
+# SOME CLASS WITH METHOD:
+
+class LeapYear:
+    def __init__(self, year):
+        self.year = year
+
+    def check_year(self):
+        if self.year % 4 == 0:
+            return True
+        return False
+
+
+year_test = LeapYear(2020)
+if year_test.check_year() is False:
+    print("Year is not leap.")
+else:
+    print("Year is leap.")
