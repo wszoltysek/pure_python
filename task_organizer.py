@@ -3,6 +3,7 @@ import sqlite3
 import uuid
 import datetime as dt
 import sys
+from app_msgs import task_intro
 
 parser = argparse.ArgumentParser()
 subparsers = parser.add_subparsers(dest='parser')
@@ -28,15 +29,7 @@ update_parser.add_argument('--hash', help='Task hash', required=True)
 args = parser.parse_args()
 
 if args.parser is None:
-    print('########################################')
-    print('Enter command and data like in examples:')
-    print('')
-    print('add --name "TASK NAME" --deadline "TASK DEADLINE" --description "TASK DESCRIPTION"')
-    print('update --name "TASK NEW NAME" --deadline "TASK NEW DEADLINE" '
-          '--description "TASK NEW DESCRIPTION" --hash "TASK HASH"')
-    print('remove --hash "TASK HASH"')
-    print('list --all or list --today')
-    print('########################################')
+    print(task_intro)
     sys.exit(0)
 
 conn = sqlite3.connect('tasks.sqlite')
