@@ -90,5 +90,4 @@ local_settings.py
 db.sqlite3
 *.sqlite
 config.py
-task_database.py
 *.txt
