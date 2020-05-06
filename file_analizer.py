@@ -83,8 +83,8 @@ while not done:
             print("\nFile not found or invalid. \nStart over and enter the correct *.txt file.\n")
             sys.exit()
 
-    if "yes" == input("Do you want to start over with a different file? "
-                      "[Write \"yes\" or \"no\"] \n"):
+    if "yes" == input("Do you want to start over with a different file?\n"
+                      "[Write \"yes\" or type any key to exit.] \n"):
         print(repeat_msg)
         sys.exit()
     else:
