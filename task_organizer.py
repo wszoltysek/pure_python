@@ -3,7 +3,7 @@ import sqlite3
 import uuid
 import datetime as dt
 import sys
-from app_msgs import task_intro
+from apps_messages.organizer_msgs import task_intro
 
 parser = argparse.ArgumentParser()
 subparsers = parser.add_subparsers(dest='parser')

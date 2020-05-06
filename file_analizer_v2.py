@@ -1,5 +1,5 @@
 import sys
-from app_msgs import start_msg, repeat_msg, end_msg
+from apps_messages.analizer_v2_msgs import start_msg, repeat_msg, end_msg
 
 done = False
 while not done:
