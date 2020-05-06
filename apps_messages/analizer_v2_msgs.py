@@ -3,7 +3,7 @@ start_msg = """
 
                   WELCOME TO TEXT FILE ANALIZER.
 
-         This program analyzes the data from users txt file.
+         This program analyzes the data from user txt file.
 
 #########################################################################
 """
@@ -12,7 +12,6 @@ repeat_msg = """
 #########################################################################
 
                           WELCOME AGAIN!
-
 
 #########################################################################
 """
@@ -25,4 +24,11 @@ end_msg = """
                               Good Bye!
 
 #########################################################################
+"""
+
+file_error = """
+#############################################
+        FILE NOT FOUND OR INVALID!
+Start over and enter the correct *.txt file.
+#############################################
 """

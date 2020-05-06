@@ -1,5 +1,5 @@
 import sys
-from apps_messages.analizer_v2_msgs import start_msg, repeat_msg, end_msg
+from apps_messages.analizer_v2_msgs import *
 
 print(start_msg)
 done = False
@@ -71,10 +71,10 @@ while not done:
                 print(f"and {file.other_counter} other characters.\n")
 
     except FileNotFoundError:
-        print("\nFile not found or invalid. \nStart over and enter the correct *.txt file.\n")
+        print(file_error)
 
-    if "yes" == input("Do you want to start over with a different file? "
-                      "[Write \"yes\" or \"no\"] \n"):
+    if "yes" == input("Do you want to start over with a different file?\n"
+                      "[Write \"yes\" or type any key to exit.] \n"):
         print(repeat_msg)
     else:
         done = True
