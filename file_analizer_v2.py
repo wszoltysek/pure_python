@@ -1,6 +1,7 @@
 import sys
 from apps_messages.analizer_v2_msgs import start_msg, repeat_msg, end_msg
 
+print(start_msg)
 done = False
 while not done:
 
@@ -45,11 +46,9 @@ while not done:
                     else:
                         self.other_counter += 1
 
-
-    print(start_msg)
-    in_file = input("Enter your txt file for analysis: ")
+    user_file = input("Enter your txt file for analysis: ")
     try:
-        file = FileAnalizer(in_file)
+        file = FileAnalizer(user_file)
         file.process_file()
 
         if file.all_char_counter == 0:
@@ -74,8 +73,10 @@ while not done:
     except FileNotFoundError:
         print("\nFile not found or invalid. \nStart over and enter the correct *.txt file.\n")
 
-    if "yes" != input("Do you want to start over with a different file? "
+    if "yes" == input("Do you want to start over with a different file? "
                       "[Write \"yes\" or \"no\"] \n"):
+        print(repeat_msg)
+    else:
         done = True
         print(end_msg)
         sys.exit()
