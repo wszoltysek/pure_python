@@ -263,25 +263,67 @@
 
 # STATIC METHOD: Działa i na classie i na obiekcie!
 
-class American:
+# class American:
+#
+#     @staticmethod
+#     def print_nationality():
+#         print("America")
+#
+#
+# anAmerican = American()
+# anAmerican.print_nationality()
+# American.print_nationality()
+#
+#
+# class Circle:
+#     def __init__(self, r):
+#         self.radius = r
+#
+#     def area(self):
+#         return self.radius**2*3.14
+#
+#
+# aCircle = Circle(2)
+# print(aCircle.area())
 
-    @staticmethod
-    def print_nationality():
-        print("America")
+
+# class MyError(Exception):
+#     """My own exception class
+#
+#     Attributes:
+#         msg  -- explanation of the error
+#     """
+#
+#     def __init__(self, msg):
+#         self.msg = msg
+#
+#
+# error = MyError("something wrong")
+# print(error)
 
 
-anAmerican = American()
-anAmerican.print_nationality()
-American.print_nationality()
+# def f(n):
+#     if n == 0:
+#         return 0
+#     else:
+#         return f(n - 1) + 100
+#
+#
+# n = int(input())
+# print(f(n))
 
 
-class Circle:
-    def __init__(self, r):
-        self.radius = r
+def even_generator(n):
+    i = 0
+    while i <= n:
+        if i % 2 == 0:
+            yield i
+        i += 1
 
-    def area(self):
-        return self.radius**2*3.14
 
+n = int(input())
+values = [str(i) for i in even_generator(n)]
+# for i in even_generator(n):
+#     values.append(str(i))
 
-aCircle = Circle(2)
-print(aCircle.area())
+print(",".join(values))
