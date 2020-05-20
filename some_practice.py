@@ -120,18 +120,34 @@
 
 # SOME CLASS WITH METHOD:
 
-class LeapYear:
-    def __init__(self, year):
-        self.year = year
+# class LeapYear:
+#     def __init__(self, year):
+#         self.year = year
+#
+#     def check_year(self):
+#         if self.year % 4 == 0:
+#             return True
+#         return False
+#
+#
+# year_test = LeapYear(2020)
+# if year_test.check_year() is False:
+#     print("Year is not leap.")
+# else:
+#     print("Year is leap.")
 
-    def check_year(self):
-        if self.year % 4 == 0:
-            return True
-        return False
+
+# Samogłoski w stringu bez względu na wielkość znaków:
 
 
-year_test = LeapYear(2020)
-if year_test.check_year() is False:
-    print("Year is not leap.")
-else:
-    print("Year is leap.")
+def checker(value):
+    check = ("a", "e", "i", "o", "u", "y")
+    counter = 0
+    for i in value.lower():
+        if i in check:
+            counter += 1
+    return counter
+
+
+txt = "Ala ma kota i ewelinA E Y"
+print(checker(txt))
