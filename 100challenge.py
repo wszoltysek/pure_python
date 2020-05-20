@@ -235,15 +235,53 @@
 # list_create()
 
 
-tp = (1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
-tp1 = tp[:5]
-tp2 = tp[5:]
-print(tp1)
-print(tp2)
+# tp = (1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+# tp1 = tp[:5]
+# tp2 = tp[5:]
+# print(tp1)
+# print(tp2)
+#
+#
+# tp = (1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+# li = [i for i in tp if i % 2 == 0]
+# tp_new = tuple(li)
+# print(li)
+# print(tp_new)
 
 
-tp = (1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
-li = [i for i in tp if i % 2 == 0]
-tp_new = tuple(li)
-print(li)
-print(tp_new)
+# s = input()
+# if s == "yes" or s == "YES" or s == "Yes":
+#     print("Yes")
+# else:
+#     print("No")
+
+
+# li = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+# evenNumbers = filter(lambda x: x % 2 == 0, li)
+# print([i for i in evenNumbers])
+
+
+# STATIC METHOD: Działa i na classie i na obiekcie!
+
+class American:
+
+    @staticmethod
+    def print_nationality():
+        print("America")
+
+
+anAmerican = American()
+anAmerican.print_nationality()
+American.print_nationality()
+
+
+class Circle:
+    def __init__(self, r):
+        self.radius = r
+
+    def area(self):
+        return self.radius**2*3.14
+
+
+aCircle = Circle(2)
+print(aCircle.area())
