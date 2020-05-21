@@ -1,5 +1,6 @@
 # GENERATORY - Funkcje, które zwracają kolejne wartosci iteratora:
 
+
 # def yield_test(value):
 #     sam_list = ["a", "b", "e", "y"]
 #     for sam in value:
@@ -14,10 +15,23 @@
 #             return sam
 #
 #
-# smt = "ala i ewelina ma kota"
+# # Samogłoski w stringu bez względu na wielkość znaków:
+#
+#
+# def checker(value):
+#     check = ("a", "e", "i", "o", "u", "y")
+#     counter = 0
+#     for i in value.lower():
+#         if i in check:
+#             counter += 1
+#     return counter
+#
+#
+# smt = "Ala ma kota i ewelinA E Y"
 #
 # print("debug1", [sam for sam in yield_test(smt)])
 # print("debug2", [sam for sam in return_test(smt)])
+# print("debug3 - ignore case", checker(smt))
 
 
 # ARGS / KWARGS:
@@ -135,19 +149,3 @@
 #     print("Year is not leap.")
 # else:
 #     print("Year is leap.")
-
-
-# Samogłoski w stringu bez względu na wielkość znaków:
-
-
-def checker(value):
-    check = ("a", "e", "i", "o", "u", "y")
-    counter = 0
-    for i in value.lower():
-        if i in check:
-            counter += 1
-    return counter
-
-
-txt = "Ala ma kota i ewelinA E Y"
-print(checker(txt))
