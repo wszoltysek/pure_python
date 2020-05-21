@@ -88,8 +88,8 @@
 
 # Generator:
 # gen_comp = (2 ** i for i in range(10))
-# for gen in gen_comp:
-#     print(gen)
+
+# print([gen for gen in gen_comp])
 
 
 # is vs ==
