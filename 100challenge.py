@@ -373,11 +373,117 @@
 # print(bin_search(li, 12))
 
 
-import random
+# import random
 
 # print(random.random() * 100)
 # print(random.choice([i for i in range(0, 1056) if i % 5 == 0 and i % 7 == 0]))
-print(random.sample([i for i in range(100, 200)], 5))
-print(random.sample(range(100, 200), 6))
-print(random.sample([i for i in range(100, 200) if i % 2 == 0], 5))
-print(random.randrange(5, 7))
+# print(random.sample([i for i in range(100, 200)], 5))
+# print(random.sample(range(100, 200), 6))
+# print(random.sample([i for i in range(100, 200) if i % 2 == 0], 5))
+# print(random.randrange(5, 7))
+
+
+# from timeit import Timer
+#
+# t = Timer("for i in range(100):1+1")
+# print(t.timeit())
+
+
+# import random
+#
+# li = [3, 6, 7, 8]
+# random.shuffle(li)
+# print(li)
+# print(random.shuffle(li)) # TO ZWRÓCI NONE ! Tak samo jak z sort i sorted !!!
+
+
+# subjects = ["I", "You"]
+# verbs = ["Play", "Love"]
+# objects = ["Hockey", "Football"]
+#
+# for i in range(len(subjects)):
+#     for j in range(len(verbs)):
+#         for k in range(len(objects)):
+#             sentence = f"{subjects[i]} {verbs[j]} {objects[k]}."
+#             print(sentence)
+
+
+# li = [12, 24, 35, 70, 88, 120, 155]
+# li_new = [i for i in li if i % 5 != 0 and i % 7 != 0]
+# print(li_new)
+
+
+# li = [12, 24, 35, 70, 88, 120, 155]
+# print(li)
+# li = [x for (i, x) in enumerate(li) if i % 2 != 0]
+# print(li)
+
+
+# li = [12, 24, 35, 70, 88, 120, 155]
+# print(li)
+# li = [x for (i, x) in enumerate(li) if i not in (0, 4, 5)]
+# print(li)
+
+
+# array = [[[0 for col in range(8)] for col in range(5)] for row in range(3)]
+# print(array)
+
+
+# set1 = set([1, 3, 6, 78, 35, 55])
+# set2 = set([12, 24, 35, 24, 88, 120, 155])
+# set1 &= set2
+# set1 = set1 & set2 # TO SAMO CO &= !!!
+# li = list(set1)
+# print(li)
+
+
+# def remove_duplicate(li):
+#     newli = []
+#     seen = set()
+#     for item in li:
+#         if item not in seen:
+#             seen.add(item)
+#             newli.append(item)
+#     return newli
+#
+#
+# li = [12, 24, 35, 24, 88, 120, 155, 88, 120, 155]
+# print(remove_duplicate(li))
+
+
+# Count char in string. Output as a dict:
+
+# dic = {}
+# s = input()
+# for i in s:
+#     dic[i] = dic.get(i, 0) + 1
+# print('\n'.join(['%s,%s' % (k, v) for k, v in dic.items()]))
+
+
+# Reverse string:
+
+# s = input()
+# rev_s = s[::-1]
+# print(rev_s)
+
+
+# Permutations - wszystkie możliwe kombinacje zbioru skończonego:
+
+# import itertools
+#
+# print(list(itertools.permutations([1, 2, 3])))
+
+
+def solve(numheads, numlegs):
+    ns = 'No solutions!'
+    for i in range(numheads + 1):
+        j = numheads - i
+        if 2 * i + 4 * j == numlegs:
+            return i, j
+    return ns, ns
+
+
+numheads = 35
+numlegs = 94
+solutions = solve(numheads, numlegs)
+print(solutions)
