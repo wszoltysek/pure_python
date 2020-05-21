@@ -313,17 +313,37 @@
 # print(f(n))
 
 
-def even_generator(n):
-    i = 0
-    while i <= n:
-        if i % 2 == 0:
-            yield i
-        i += 1
+# def even_generator(n):
+#     i = 0
+#     while i <= n:
+#         if i % 2 == 0:
+#             yield i
+#         i += 1
+#
+#
+# n = int(input())
+# values = [str(i) for i in even_generator(n)]
+# # for i in even_generator(n):
+# #     values.append(str(i))
+#
+# print(",".join(values))
 
 
-n = int(input())
-values = [str(i) for i in even_generator(n)]
-# for i in even_generator(n):
-#     values.append(str(i))
+# def num_generator(n):
+#     for i in range(n + 1):
+#         if i % 5 == 0 and i % 7 == 0:
+#             yield i
+#
+#
+# n = int(input())
+# values = [str(i) for i in num_generator(n)]
+# print(",".join(values))
 
-print(",".join(values))
+
+# li = [2, 4, 6, 8, 9]
+# for i in li:
+#     assert i % 2 == 0
+
+
+expression = input("Enter mathematic expression to evaluate: ")
+print(f"The result is: {eval(expression)}")
