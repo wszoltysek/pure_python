@@ -371,3 +371,13 @@
 # li = [2, 5, 7, 9, 11, 17, 222]
 # print(bin_search(li, 11))
 # print(bin_search(li, 12))
+
+
+import random
+
+# print(random.random() * 100)
+# print(random.choice([i for i in range(0, 1056) if i % 5 == 0 and i % 7 == 0]))
+print(random.sample([i for i in range(100, 200)], 5))
+print(random.sample(range(100, 200), 6))
+print(random.sample([i for i in range(100, 200) if i % 2 == 0], 5))
+print(random.randrange(5, 7))
