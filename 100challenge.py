@@ -474,16 +474,92 @@
 # print(list(itertools.permutations([1, 2, 3])))
 
 
-def solve(numheads, numlegs):
-    ns = 'No solutions!'
-    for i in range(numheads + 1):
-        j = numheads - i
-        if 2 * i + 4 * j == numlegs:
-            return i, j
-    return ns, ns
+# def solve(numheads, numlegs):
+#     ns = 'No solutions!'
+#     for i in range(numheads + 1):
+#         j = numheads - i
+#         if 2 * i + 4 * j == numlegs:
+#             return i, j
+#     return ns, ns
+#
+#
+# numheads = 35
+# numlegs = 94
+# solutions = solve(numheads, numlegs)
+# print(solutions)
 
 
-numheads = 35
-numlegs = 94
-solutions = solve(numheads, numlegs)
-print(solutions)
+# EXTRAS:
+
+class Reverse:
+    def __init__(self, value):
+        self.value = value
+
+    def reverse(self):
+        # return self.value[::-1]
+        return ' '.join(reversed(value.split()))
+
+
+value = input()
+print(Reverse(value).reverse())
+
+
+class PrintString:
+    def __init__(self):
+        self.value = ""
+
+    def get_string(self):
+        self.value = input()
+
+    def print_string(self):
+        print(self.value.upper())
+
+
+string = PrintString()
+string.get_string()
+string.print_string()
+
+
+class Rectangle:
+    def __init__(self, length, width):
+        self.length = length
+        self.width = width
+
+    def compute_area(self):
+        return self.length * self.width
+
+
+try:
+    width = int(input("Enter width: "))
+    length = int(input("Enter lenght: "))
+
+    rect = Rectangle(length, width)
+    print(f"Area have {rect.compute_area()} square meters.")
+
+except ValueError:
+    print("Incorrect input. Must be int!")
+
+
+import math
+
+
+class Circle:
+    def __init__(self, radius):
+        self.radius = radius
+
+    def compute_area(self):
+        return math.pi * (self.radius ** 2)
+
+    def compute_perimeter(self):
+        return 2 * math.pi * self.radius
+
+
+try:
+    radius = int(input("Enter radius in meteres: "))
+
+    rect = Circle(radius)
+    print(f"Circle have {round(rect.compute_area())} square meters.")
+    print(f"Circle perimeter equales {rect.compute_perimeter()} meters.")
+
+except ValueError:
+    print("Incorrect input. Must be int!")
