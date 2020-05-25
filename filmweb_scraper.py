@@ -1,6 +1,5 @@
 import requests
 from bs4 import BeautifulSoup
-# lxml - the fastest parser for html.
 
 
 class MovieScraper:
@@ -10,14 +9,17 @@ class MovieScraper:
     """
 
     @staticmethod
-    def scrap_movies():
+    def page_parser():
         url = "https://www.filmweb.pl/ranking/film"
         page = requests.get(url)
         soup = BeautifulSoup(page.content, "lxml")
         body = soup.body
+        return body
 
-        positions = body.find_all("div", {"class": "ranking__position"})
-        titles = body.find_all("a", {"class": "film__link"})
+    @staticmethod
+    def content_scraper():
+        positions = MovieScraper.page_parser().find_all("div", {"class": "ranking__position"})
+        titles = MovieScraper.page_parser().find_all("a", {"class": "film__link"})
 
         pos_txt = [pos.text for pos in positions]
         title_txt = [title.text for title in titles]
@@ -28,7 +30,7 @@ class MovieScraper:
 
 
 if __name__ == "__main__":
-    MovieScraper.scrap_movies()
+    MovieScraper.content_scraper()
 
 """
 TODO:
