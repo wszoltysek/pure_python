@@ -1,11 +1,12 @@
 import requests
 from bs4 import BeautifulSoup
+import json
 
 
 class MovieScraper:
     """
-    Module responsible for scraping TOP movies from Filmweb page ranking
-    and save it to the database.
+    Module responsible for scraping TOP25 movies from Filmweb ranking page
+    and save it to the json file.
     """
 
     @staticmethod
@@ -25,18 +26,9 @@ class MovieScraper:
         title_txt = [title.text for title in titles]
 
         movies_dict = {k: v for k, v in zip(pos_txt, title_txt)}
-        for k, v in movies_dict.items():
-            print(f"Pozycja: {k}, Tytuł: {v}")
+        with open("movies.json", "w") as file:
+            json.dump(movies_dict, file)
 
 
 if __name__ == "__main__":
     MovieScraper.content_scraper()
-
-"""
-TODO:
-- wyszukanie wszystkich
-- program obiektowo z metodami.
-    - metoda 1 do otwiernia, metoda 2 do pobiernia, metoda 3 do zapisu
-- zapisywanie do bazy danych
-
-"""
