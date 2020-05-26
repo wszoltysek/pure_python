@@ -7,7 +7,7 @@ class TVScraper:
 
     @staticmethod
     def page_parser():
-        url = "https://www.teleman.pl/program-tv?hour=20"
+        url = "https://www.teleman.pl/program-tv/stacje/Polsat?hour=-1"
         page = requests.get(url)
         soup = BeautifulSoup(page.content, "lxml")
         page_body = soup.body
@@ -15,22 +15,20 @@ class TVScraper:
 
     @staticmethod
     def page_content_scraper():
+        # Station name:
+        station_name = TVScraper.page_parser().find("h1").text
 
-        # NAZWY WSZYSTKICH KANAŁÓW TV:
-        # tv_stations = TVScraper.page_parser().find_all("div", {"class": "name"})
-        # tv_stations_txt: str = [station.text for station in tv_stations]
-        # print(tv_stations_txt)
+        # Shows time:
+        hours = TVScraper.page_parser().find_all("em")
+        hours_list = [hour.text for hour in hours]
 
-        # POLSAT:
-        polsat = TVScraper.page_parser().find("div", {"data-station-id": "3"})
-        polsat_name = polsat.find("div", {"class": "name"})
-        first_show = polsat.find("a", {"class": "prog-title"})
-        # first_show_hour = first_show.attrs["data-time"]
-        first_show_hour = polsat.find("span", {"class": "time"})
+        # Shows details:
+        shows_details = TVScraper.page_parser().find_all("div", {"class": "detail"})
+        shows_name_list = [name.text for a in shows_details for name in a.find_all("a") if len(name.text) > 1]
+        shows_genre_list = [desc.text for p in shows_details for desc in p.find_all("p", {"class": "genre"})]
 
-        print(polsat_name.text) # Polsat
-        print(first_show.text) # Dzień Matki
-        print(first_show_hour.text) # 20:00
+        for h, n, g in zip(hours_list, shows_name_list, shows_genre_list):
+            print(f"Godzina: {h}, Program: {n}, Opis: {g}")
 
 
 if __name__ == "__main__":
@@ -38,26 +36,14 @@ if __name__ == "__main__":
 
 
 
-# time = TVScraper.page_parser()("span", {"class": "time"})
-# time_txt: str = [time.text for time in time]
-# time_str = (" ".join(time_txt))
-# searched_hour = re.findall(r"(1[2]|2[0]:[0-5][0-9])", time_str)
-# print(searched_hour)
-
-# tv_dict = {k: v for k, v in zip(titles_txt, searched_hour)}
-# for k, v in tv_dict.items():
-#     print(k, v)
-
-
 """
 ZAMYSŁ: 
-- Stacja: TVN Tytuł: Nazwa Godzina: 20:00+
-- Programy na stronie rozpoczynające się po 20:00, zatem regex też musi wyszukiwać od 20:00 do 24:00
-- Stacja, Titles i times musza byc tak pobierane zeby razem byly powiazane jakos.
-- Dopiero wtedy mozna je razem zapisac (np. do dict)
-
+- Print Nazwa stacji: <nazwa>
+- Print Data programu: Date.today
+- Print (dane zapisane)
 - lista jako kolumna w sql lite - zapis !
-- nazwa programu i jego godzina musza byc razem
+- trzecia lista to opis
 - dopisz kolumne date z date.today przy zapisie
+- docstring
 
 """
