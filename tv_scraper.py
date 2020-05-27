@@ -12,7 +12,7 @@ class TVScraper:
 
     @staticmethod
     def page_parser():
-        url = "https://www.teleman.pl/program-tv/stacje/Polsat?hour=-1"
+        url = "https://www.teleman.pl/program-tv/stacje/TVN?hour=-1"
         page = requests.get(url)
         soup = BeautifulSoup(page.content, "lxml")
         page_body = soup.body
@@ -22,6 +22,9 @@ class TVScraper:
     def page_content_scraper():
         # Station name:
         station_name = TVScraper.page_parser().find("h1").text
+
+        # Date:
+        date = datetime.date.today()
 
         # Shows time:
         hours = TVScraper.page_parser().find_all("em")
@@ -38,27 +41,26 @@ class TVScraper:
             for desc in p.find_all("p", {"class": "genre"}) if len(desc.text) > 1
         ]
 
-        # Date:
-        date = datetime.date.today()
-
         # Saving to database:
         conn = sqlite3.connect("tv.sqlite")
         cursor = conn.cursor()
 
-        conn.execute("""CREATE TABLE IF NOT EXISTS tv_shows
-                     (time integer NOT NULL,
+        conn.execute("""CREATE TABLE IF NOT EXISTS tv_program
+                     (station text NOT NULL,
+                     time integer NOT NULL,
                      name text NOT NULL,
                      description text NOT NULL,
                      date date NOT NULL
                      );""")
 
         for h, n, g in zip(hours_list, shows_name_list, shows_genre_list):
-            cursor.execute("INSERT INTO tv_shows VALUES (?, ?, ?, ?)", (h, n, g, date))
+            cursor.execute("INSERT INTO tv_program VALUES (?, ?, ?, ?, ?)",
+                           (station_name, h, n, g, date))
             conn.commit()
 
         # Printing saved content in terminal:
 
-        fmt = "{:<10}{:<35}{}"
+        fmt = "{:<10}{:<400}{}"
         print(f"STATION: {station_name}")
         print(f"Program date: {datetime.date.today()}\n")
         print(fmt.format("TIME", "PROGRAM", "DESCRIPTION"))
