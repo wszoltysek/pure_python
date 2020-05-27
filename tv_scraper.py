@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
-import re
 import datetime
+import sqlite3
 
 
 class TVScraper:
@@ -16,6 +16,7 @@ class TVScraper:
 
     @staticmethod
     def page_content_scraper():
+
         # Station name:
         station_name = TVScraper.page_parser().find("h1").text
 
@@ -30,13 +31,32 @@ class TVScraper:
         shows_genre_list = [desc.text for p in shows_details
                             for desc in p.find_all("p", {"class": "genre"}) if len(desc.text) > 1]
 
-        fmt = "{:<10}{:<35}{}"
+        # Date:
+        date = datetime.date.today()
 
-        print(f"STACJA: {station_name}")
-        print(f"Data programu: {datetime.date.today()}\n")
-        print(fmt.format("GODZINA", "PROGRAM", "OPIS"))
+        # Saving to database:
+        conn = sqlite3.connect("tv.sqlite")
+        cursor = conn.cursor()
+
+        conn.execute('''CREATE TABLE IF NOT EXISTS tv_shows
+                     (time integer NOT NULL,
+                     name text NOT NULL,
+                     description text NOT NULL,
+                     date date NOT NULL
+                     );''')
+
         for h, n, g in zip(hours_list, shows_name_list, shows_genre_list):
-            print(fmt.format(h, n, g))
+            cursor.execute("INSERT INTO tv_shows VALUES (?, ?, ?, ?)", (h, n, g, date))
+            conn.commit()
+
+        # Printing saved content in terminal:
+
+        # fmt = "{:<10}{:<35}{}"
+        # print(f"STACJA: {station_name}")
+        # print(f"Data programu: {datetime.date.today()}\n")
+        # print(fmt.format("GODZINA", "PROGRAM", "OPIS"))
+        # for h, n, g in zip(hours_list, shows_name_list, shows_genre_list):
+        #     print(fmt.format(h, n, g))
 
 
 if __name__ == "__main__":
@@ -45,7 +65,7 @@ if __name__ == "__main__":
 
 """
 ZAMYSŁ: 
-- lista jako kolumna w sql lite - zapis !
-- dopisz kolumne date z date.today przy zapisie
 - docstring
 """
+
+
