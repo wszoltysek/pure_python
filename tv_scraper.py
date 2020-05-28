@@ -60,7 +60,7 @@ class TVScraper:
 
         # Printing saved content in terminal:
 
-        fmt = "{:<10}{:<400}{}"
+        fmt = "{:<10}{:<40}{}"
         print(f"STATION: {station_name}")
         print(f"Program date: {datetime.date.today()}\n")
         print(fmt.format("TIME", "PROGRAM", "DESCRIPTION"))
