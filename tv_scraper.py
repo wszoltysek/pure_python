@@ -60,12 +60,12 @@ class TVScraper:
 
         # Printing saved content in terminal:
 
-        fmt = "{:<10}{:<40}{}"
+        fmt = "{:<5}{:<10}{:<50}{}"
         print(f"STATION: {station_name}")
-        print(f"Program date: {datetime.date.today()}\n")
-        print(fmt.format("TIME", "PROGRAM", "DESCRIPTION"))
-        for h, n, g in zip(hours_list, shows_name_list, shows_genre_list):
-            print(fmt.format(h, n, g))
+        print(f"Program date: {date}\n")
+        print(fmt.format("NR", "TIME", "PROGRAM", "DESCRIPTION"))
+        for i, (h, n, g) in enumerate(zip(hours_list, shows_name_list, shows_genre_list), start=1):
+            print(fmt.format(i, h, n, g))
         print("\nContent saved to the database.")
 
 
