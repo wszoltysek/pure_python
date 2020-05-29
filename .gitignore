@@ -92,3 +92,4 @@ db.sqlite3
 config.py
 *.txt
 *.json
+*.csv
