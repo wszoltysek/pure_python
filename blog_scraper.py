@@ -5,7 +5,8 @@ import csv
 
 class BlogScraper:
     """
-    To be added.
+    Module responsible for scraping posts content from event blog
+    by title, date, summary, link and save it to the csv file.
     """
 
     @staticmethod
