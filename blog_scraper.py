@@ -30,9 +30,8 @@ class BlogScraper:
             for single_art in articles:
                 title = single_art.h2.text
                 date = single_art.li["datetime"]
-                main_summary = single_art.p
                 delete_a = single_art.find("a", {"class": "continue-reading"}).decompose()
-                summary = main_summary.text
+                summary = single_art.p.text
                 link = single_art.a["href"]
 
                 csv_writer.writerow([title, date, summary, link])
