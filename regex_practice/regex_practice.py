@@ -14,5 +14,14 @@ fn_matches = full_name_pattern.finditer(data_file)
 phone_pattern = re.compile(r"\d{3}[*-.]+\d{3}[*-.]+\d{4}")
 ph_matches = phone_pattern.finditer(data_file)
 
-for match in ph_matches:
+# for match in ph_matches:
+#     print(match.group())
+
+# adresses:
+addr_pattern = re.compile(
+    r"(\d{3}\s)([A-Za-z]+\s[A-Z]{1}[a-z]{1}[.|,]+\s)([A-Za-z]+\s)([A-Z]{2}\s)(\d+)"
+)
+addr_matches = addr_pattern.finditer(data_file)
+
+for match in addr_matches:
     print(match.group())
