@@ -23,5 +23,12 @@ addr_pattern = re.compile(
 )
 addr_matches = addr_pattern.finditer(data_file)
 
-for match in addr_matches:
-    print(match.group())
+# for match in addr_matches:
+#     print(match.group())
+
+# emails:
+email_pattern = re.compile(r"([a-z]+)([.]*)([a-z]*)@([a-z]+)([\.a-z]+)([\.a-z]*)")
+email_matches = email_pattern.finditer(data_file)
+
+emails_list = [match.group() for match in email_matches]
+print(emails_list)
