@@ -1,5 +1,5 @@
 class Car:
-    def __init__(self, pax_count, car_mass, gear_count):
+    def __init__(self, pax_count: int, car_mass: int, gear_count: int):
         self.pax_count = pax_count
         self.car_mass = car_mass
         self.gear_count = gear_count
@@ -9,7 +9,7 @@ class Car:
         return self._pax_count
 
     @pax_count.setter
-    def pax_count(self, value):
+    def pax_count(self, value: int):
         if value < 1:
             raise IllegalCarError("No passengers")
         elif value > 5:
@@ -22,7 +22,7 @@ class Car:
         return self._car_mass
 
     @car_mass.setter
-    def car_mass(self, value):
+    def car_mass(self, value: int):
         if value > 2000:
             raise IllegalCarError("Car is to heavy")
         else:
