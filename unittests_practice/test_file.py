@@ -30,6 +30,11 @@ class TestFile(unittest.TestCase):
             Car(6, 1500, 6).pax_count()
         self.assertTrue("To many passengers" in str(context.exception))
 
+    def test_pax_count_only_errors(self):
+        with self.assertRaises(IllegalCarError):
+            Car(6, 1500, 6).pax_count()
+            Car(0, 40, 5).pax_count()
+
 
 if __name__ == "__main__":
     unittest.main()
