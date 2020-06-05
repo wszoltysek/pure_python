@@ -1,13 +1,13 @@
 import unittest
 import sys
 
-sys.path.append('../')
+sys.path.append("../")
 from unittests_practice.file import Car, IllegalCarError
 
 
 class TestFile(unittest.TestCase):
 
-    def test_car_mass(self):
+    def test_car_total_mass(self):
         first_car = Car(2, 900, 5).total_mass
         second_car = Car(5, 1200, 5).total_mass
         third_car = Car(4, 1400, 6).total_mass
