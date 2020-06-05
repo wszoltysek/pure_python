@@ -16,8 +16,10 @@ def test_car_total_mass(car, result):
 
 def test_pax_count_only_errors():
     with pytest.raises(IllegalCarError):
-        assert Car(6, 1500, 6).pax_count()
-        assert Car(0, 40, 5).pax_count()
+        assert Car(6, 1500, 6).pax_count()      # To many passengers
+        assert Car(0, 1999, 5).pax_count()      # No passengers
+        assert Car(5, 2100, 6).car_mass()       # Car is to heavy
+        assert Car(6, 2200, 6).car_mass()       # To many passengers, Car is to heavy
 
 
 def test_car_mass_to_heavy():
