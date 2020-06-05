@@ -7,6 +7,12 @@ from unittests_practice.file import Car, IllegalCarError
 
 class TestFile(unittest.TestCase):
 
+    def setUp(self):
+        print("Start")
+
+    def tearDown(self):
+        print("End")
+
     def test_car_total_mass(self):
         first_car = Car(2, 900, 5).total_mass
         second_car = Car(5, 1200, 5).total_mass
