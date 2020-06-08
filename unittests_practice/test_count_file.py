@@ -20,3 +20,11 @@ def test_is_there_two_identical_adjacent_digits():
     assert is_there_two_identical_adjacent_digits(["1", "2", "3", "4", "5", "6", "7"]) is False
     assert is_there_two_identical_adjacent_digits("122345567") is True
     assert is_there_two_identical_adjacent_digits(["1", "2", "2", "3", "4", "5", "5", "6", "7"]) is True
+
+
+def test_is_never_decreasing():
+    assert is_never_decreasing(["1", "2", "3"]) is True
+    assert is_never_decreasing(["1", "2", "3", "1"]) is False
+    assert is_never_decreasing("123456") is True
+    assert is_never_decreasing("123156") is False
+    assert is_never_decreasing("1231562") is False
