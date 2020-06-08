@@ -3,7 +3,7 @@ import sys
 
 sys.path.append("../")
 from unittests_practice.count_file import \
-    num_to_digits, is_there_two_identical_adjacent_digits, is_never_decreasing
+    num_to_digits, is_there_two_identical_adjacent_digits, is_never_decreasing, might_be_password
 
 
 @pytest.mark.parametrize("number, result", (
@@ -28,3 +28,8 @@ def test_is_never_decreasing():
     assert is_never_decreasing("123456") is True
     assert is_never_decreasing("123156") is False
     assert is_never_decreasing("1231562") is False
+
+
+def test_might_be_password():
+    assert might_be_password("123422522") is False
+    assert might_be_password("12234566") is True
