@@ -8,23 +8,24 @@ from apps_messages.organizer_msgs import task_intro
 parser = argparse.ArgumentParser()
 subparsers = parser.add_subparsers(dest='parser')
 
-list_parser = subparsers.add_parser('list')
-list_parser.add_argument('--all', help='All tasks', action='store_true')
-list_parser.add_argument('--today', help='Tasks with today deadline', action='store_true')
-
 add_parser = subparsers.add_parser('add')
 add_parser.add_argument('--name', help='Name of the task', required=True)
 add_parser.add_argument('--deadline', help='Deadline for the task', required=True)
 add_parser.add_argument('--description', help='Description of the task', required=True)
-
-remove_parser = subparsers.add_parser('remove')
-remove_parser.add_argument('--hash', help='Task hash', required=True)
 
 update_parser = subparsers.add_parser('update')
 update_parser.add_argument('--name', help='Name of the task', required=True)
 update_parser.add_argument('--deadline', help='Deadline for the task', required=True)
 update_parser.add_argument('--description', help='Description of the task', required=True)
 update_parser.add_argument('--hash', help='Task hash', required=True)
+
+remove_parser = subparsers.add_parser('remove')
+remove_parser.add_argument('--hash', help='Task hash', required=True)
+
+list_parser = subparsers.add_parser('list')
+list_parser.add_argument('--all', help='All tasks', action='store_true')
+list_parser.add_argument('--today', help='Tasks with today deadline', action='store_true')
+
 
 args = parser.parse_args()
 
