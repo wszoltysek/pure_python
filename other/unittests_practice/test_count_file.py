@@ -1,8 +1,5 @@
 import pytest
-import sys
-
-sys.path.append("../")
-from unittests_practice.count_file import \
+from other.unittests_practice.count_file import \
     num_to_digits, is_there_two_identical_adjacent_digits, is_never_decreasing, might_be_password
 
 

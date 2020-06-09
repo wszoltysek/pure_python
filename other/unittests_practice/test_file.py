@@ -1,8 +1,8 @@
 import unittest
 import sys
 
-sys.path.append("../")
-from unittests_practice.file import Car, IllegalCarError
+sys.path.append("../../")
+from other.unittests_practice.file import *
 
 
 class TestFile(unittest.TestCase):

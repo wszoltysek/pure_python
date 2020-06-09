@@ -1,8 +1,5 @@
 import pytest
-import sys
-
-sys.path.append("../")
-from unittests_practice.file import Car, IllegalCarError
+from other.unittests_practice.file import Car, IllegalCarError
 
 
 @pytest.mark.parametrize("car, result", (
