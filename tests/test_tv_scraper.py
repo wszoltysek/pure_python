@@ -1,3 +1,4 @@
+import os
 import sqlite3
 import unittest
 from unittest.mock import MagicMock
@@ -9,9 +10,10 @@ from tv_scraper import TVScraper
 
 class TestTVScraper(unittest.TestCase):
 
-    def setUp(self):
-        self.page_content = TVScraper.page_parser()
-        self.details = self.page_content.find_all("div", {"class": "detail"})
+    @classmethod
+    def setUpClass(cls):
+        cls.page_content = TVScraper.page_parser()
+        cls.details = cls.page_content.find_all("div", {"class": "detail"})
 
     def test_content_exists(self):
         self.assertIsNotNone(self.page_content)
@@ -46,6 +48,10 @@ class TestTVScraper(unittest.TestCase):
 
         db = sqlite3.connect("tv.sqlite")
         self.assertEqual(db, "connection succeeded")
+
+    @classmethod
+    def tearDownClass(cls):
+        os.remove("tv.sqlite")
 
 
 if __name__ == '__main__':
