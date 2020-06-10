@@ -45,5 +45,5 @@ class TestMovieScraper(unittest.TestCase):
         os.remove("movies.json")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

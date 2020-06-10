@@ -44,5 +44,5 @@ class TestBlogScraper(unittest.TestCase):
         os.remove("blog_content.csv")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()
