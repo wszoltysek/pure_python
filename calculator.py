@@ -1,21 +1,15 @@
 import sys
+from apps_messages.calculator_msgs import *
 
-print("## WELCOME TO CALCULATOR ##")
+print(start_msg)
 
 finish = False
 while not finish:
 
-    intro = """
-    SELECT OPTIONS:
-    1 - add
-    2 - subtract
-    3 - multiply
-    4 - divide
-    """
     print(intro)
     choice = input("Type option number: ")
     while choice not in ["1", "2", "3", "4"]:
-        print("Choice incorrect. Try again.")
+        print("\nChoice incorrect. Try again.")
         choice = input("Type option number: ")
 
     try:
@@ -77,8 +71,8 @@ while not finish:
         print("Incorrect value. Must be int or float.")
 
     if "yes" == input("\nDo you want to start over? [Write \"yes\" or type any key to exit.] \n"):
-        print("Thanks for using calculator again!")
+        print(repeat_msg)
     else:
-        done = True
-        print("Thanks for using calculator. GoodBye!")
+        finish = True
+        print(end_msg)
         sys.exit()
