@@ -1,7 +1,7 @@
 start_msg = """
 #########################################################################
 
-                  WELCOME TO TEXT FILE ANALIZER.
+                  WELCOME TO TEXT FILE ANALYZER.
 
          This program analyzes the data from user txt file.
 
@@ -19,7 +19,7 @@ repeat_msg = """
 end_msg = """
 #########################################################################
 
-                    THANK YOU FOR USING FILE ANALIZER!
+                    THANK YOU FOR USING FILE ANALYZER!
 
                               Good Bye!
 
