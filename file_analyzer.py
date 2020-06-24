@@ -1,11 +1,11 @@
 import sys
-from apps_messages.analizer_v2_msgs import *
+from apps_messages.analyzer_msgs import *
 
 print(start_msg)
 done = False
 while not done:
 
-    class FileAnalizer:
+    class FileAnalyzer:
         def __init__(self, filename):
             self.filename = filename
             self.all_char_counter = 0
@@ -48,7 +48,7 @@ while not done:
 
     user_file = input("Enter your txt file for analysis: ")
     try:
-        file = FileAnalizer(user_file)
+        file = FileAnalyzer(user_file)
         file.process_file()
 
         if file.all_char_counter == 0:
