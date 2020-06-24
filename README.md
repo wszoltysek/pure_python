@@ -35,10 +35,10 @@ Task hash is created automatically during adding it.
 
 ## File analyzer
 
-[file_analyzer](https://github.com/wszoltysek/pure_python/blob/master/file_analizer.py) - Program takes user *.txt file from an input and analyzes it content. 
+[file_analyzer](https://github.com/wszoltysek/pure_python/blob/master/file_analyzer.py) - Program takes user *.txt file from an input and analyzes it content. 
 Developed during OOP practice, context managers usage and working with files in python. To run, type command:
 ```
-python3 file_analizer.py
+python3 file_analyzer.py
 ```
 Then type your "file.txt" if it's in the same directory or "path-to-your/file.txt" if it's not.
 
@@ -55,7 +55,7 @@ python3 blog_scraper.py
 # OR
 python3 tv_scraper.py
 # OR
-python3 filmweb.scraper.py
+python3 filmweb_scraper.py
 ```
 
 ## Calculator
