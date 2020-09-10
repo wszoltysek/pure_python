@@ -5,22 +5,20 @@ import csv
 
 class BlogScraper:
     """
-    Module responsible for scraping posts content from event blog
-    by title, date, summary, link and save it to the csv file.
+       Module responsible for scraping posts content from event blog
+       by title, date, summary, link and save it to the csv file.
     """
 
-    @staticmethod
-    def page_parser():
-        url = "https://eventowablogerka.pl/"
-        page = requests.get(url)
-        soup = BeautifulSoup(page.content, "lxml")
-        page_body = soup.body
-        return page_body
+    def __init__(self):
+        self.url = "https://eventowablogerka.pl/"
 
-    @staticmethod
-    def content_scraper():
-        page = BlogScraper.page_parser()
-        content = page.find("div", {"class": "wpb_column vc_column_container vc_col-sm-8"})
+    def load_page(self):
+        page = requests.get(self.url)
+        soup = BeautifulSoup(page.content, "lxml")
+        self.page_body = soup.body
+
+    def content_scraper(self):
+        content = self.page_body.find("div", {"class": "wpb_column vc_column_container vc_col-sm-8"})
         articles = content.find("div", {"class": "row"}).find_all("article")
 
         with open("blog_content.csv", "w") as csv_file:
@@ -36,6 +34,11 @@ class BlogScraper:
 
                 csv_writer.writerow([title, date, summary, link])
 
+    def run(self):
+        self.load_page()
+        self.content_scraper()
+
 
 if __name__ == "__main__":
-    BlogScraper.content_scraper()
+    bs = BlogScraper()
+    bs.run()
