@@ -9,18 +9,17 @@ class MovieScraper:
     and save it to the json file.
     """
 
-    @staticmethod
-    def page_parser():
-        url = "https://www.filmweb.pl/ranking/film"
-        page = requests.get(url)
-        soup = BeautifulSoup(page.content, "lxml")
-        body = soup.body
-        return body
+    def __init__(self):
+        self.url = "https://www.filmweb.pl/ranking/film"
 
-    @staticmethod
-    def content_scraper():
-        positions = MovieScraper.page_parser().find_all("div", {"class": "ranking__position"})
-        titles = MovieScraper.page_parser().find_all("a", {"class": "film__link"})
+    def page_parser(self):
+        page = requests.get(self.url)
+        soup = BeautifulSoup(page.content, "lxml")
+        self.body = soup.body
+
+    def content_scraper(self):
+        positions = self.body.find_all("div", {"class": "ranking__position"})
+        titles = self.body.find_all("a", {"class": "film__link"})
 
         pos_txt = [pos.text for pos in positions]
         title_txt = [title.text for title in titles]
@@ -29,6 +28,11 @@ class MovieScraper:
         with open("movies.json", "w") as file:
             json.dump(movies_dict, file)
 
+    def run(self):
+        self.page_parser()
+        self.content_scraper()
+
 
 if __name__ == "__main__":
-    MovieScraper.content_scraper()
+    ms = MovieScraper()
+    ms.run()
