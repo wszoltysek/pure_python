@@ -10,28 +10,28 @@ class TVScraper:
     from teleman.pl page and save it to sqlite database.
     """
 
-    @staticmethod
-    def page_parser():
-        url = "https://www.teleman.pl/program-tv/stacje/TVN?hour=-1"
-        page = requests.get(url)
-        soup = BeautifulSoup(page.content, "lxml")
-        page_body = soup.body
-        return page_body
+    def __init__(self, station: str):
+        self.station = station
+        self.url = f"https://www.teleman.pl/program-tv/stacje/{self.station}?hour=-1"
 
-    @staticmethod
-    def page_content_scraper():
+    def page_parser(self):
+        page = requests.get(self.url)
+        soup = BeautifulSoup(page.content, "lxml")
+        self.page_body = soup.body
+
+    def page_content_scraper(self):
         # Station name:
-        station_name = TVScraper.page_parser().find("h1").text
+        station_name = self.page_body.find("h1").text
 
         # Date:
         date = datetime.date.today()
 
         # Shows time:
-        hours = TVScraper.page_parser().find_all("em")
+        hours = self.page_body.find_all("em")
         hours_list = [hour.text for hour in hours if len(hour.text) > 1]
 
         # Shows details:
-        shows_details = TVScraper.page_parser().find_all("div", {"class": "detail"})
+        shows_details = self.page_body.find_all("div", {"class": "detail"})
         shows_name_list = [
             name.text for a in shows_details
             for name in a.find_all("a") if len(name.text) > 1
@@ -68,6 +68,11 @@ class TVScraper:
             print(fmt.format(i, h, n, g))
         print("\nContent saved to the database.")
 
+    def run(self):
+        self.page_parser()
+        self.page_content_scraper()
+
 
 if __name__ == "__main__":
-    TVScraper.page_content_scraper()
+    tv = TVScraper("Polsat")
+    tv.run()
