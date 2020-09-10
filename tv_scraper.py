@@ -11,7 +11,7 @@ class TVScraper:
     """
 
     def __init__(self, station: str):
-        self.station = station
+        self.station = station.replace(" ", "-")
         self.url = f"https://www.teleman.pl/program-tv/stacje/{self.station}?hour=-1"
 
     def page_parser(self):
