@@ -4,7 +4,7 @@ import sys
 import os
 
 sys.path.append("../")
-from filmweb_scraper import MovieScraper
+from filmweb_scraper_old import MovieScraper
 
 
 class TestMovieScraper(unittest.TestCase):
