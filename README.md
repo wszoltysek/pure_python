@@ -47,7 +47,7 @@ I found them popular, so I developed a few ones. From newest:
 
 1. [Blog Scraper](https://github.com/wszoltysek/pure_python/blob/master/blog_scraper.py) - Scrapes posts content from event blog by title, date, summary, link and save it to the csv file.
 2. [TV Scraper](https://github.com/wszoltysek/pure_python/blob/master/tv_scraper.py) - Scrapes TV program of a specific station from teleman.pl page and save it to sqlite3 database.
-3. [Filmweb Scraper](https://github.com/wszoltysek/pure_python/blob/master/filmweb_scraper.py) - Scrapes TOP25 movies from Filmweb ranking page and save it to the json file.
+3. [Filmweb Scraper](https://github.com/wszoltysek/pure_python/blob/master/filmweb_scraper.py) - Scrapes TOP500 movies from Filmweb ranking page and save it to the json file.
 
 To run:
 ```
