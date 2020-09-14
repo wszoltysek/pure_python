@@ -40,7 +40,6 @@ class FWScraper:
             titles = self.soup.find_all("a", {"class": "film__link"})
             pos_int = [int(pos.text.replace(".", "")) for pos in positions]
             title_txt = [title.text for title in titles]
-            print(pos_int)
 
             if len(pos_int) >= len(memory):
                 if pos_int == memory:
