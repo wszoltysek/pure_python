@@ -15,7 +15,10 @@ timings.wait_until(10, 0.5, app['Inbox — w.szoltysek@brainhint.com - Outlook']
 dlg = app['Inbox — w.szoltysek@brainhint.com - Outlook']
 # dlg.print_control_identifiers()
 
-timings.wait_until(10, 0.5, dlg['Nowa wiadomość e-mail'].exists)
+# timings.wait_until(10, 0.5, dlg['Nowa wiadomość e-mail'].exists)
+# dlg['Nowa wiadomość e-mail'].Button.click()
+
+timings.always_wait_until(10, 0.5, dlg['Nowa wiadomość e-mail'].exists)
 dlg['Nowa wiadomość e-mail'].Button.click()
 
 # time.sleep(2)
